@@ -1,6 +1,6 @@
 import drinkmaker as dm
 
-drinks = ["tea", "coffee", "chocolate"] 
+drinks = ["tea","coffee", "chocolate"] 
 
 
 def main():
@@ -10,11 +10,21 @@ def main():
 
 def order():
     drinkorder = input("Enter the type of drink you'd like: ").lower()
-    sugaramount = int(input("How much sugar would you like: "))
-    dm_instance = dm.Drinkmaker()
-    stick = ""
-    drinkorder = dm_instance.make_drink(drinkorder, sugaramount, stick)
-    print(drinkorder)
+    while drinkorder != "":
+        sugaramount = int(input("How much sugar would you like: "))
+        dm_instance = dm.Drinkmaker()
+        stick = ""
+        drinkorder = dm_instance.make_drink(drinkorder, sugaramount, stick)
+        charge(drinkorder)
+        print(drinkorder)
+        drinkorder = input("Enter the type of drink you'd like: ").lower()
+       
+    
+
+def charge(drinkorder):
+    dm_instance = dm.Drinkmaker()    
+    totalcost = dm_instance.chargedrink(drinkorder)
+    print("The total cost is:", totalcost)
 
 if __name__ == "__main__":
     main()
