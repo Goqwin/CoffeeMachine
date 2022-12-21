@@ -38,31 +38,24 @@ class Drinkmaker:
         totalcost = 0
         while type == "tea" or type == "coffee" or type =="chocolate":
             if type == "tea":
-                chargerate = 0.58
+                chargerate = 0.4
                 totalcost += chargerate
             elif type == "coffee":
-                chargerate =  0.87
+                chargerate =  0.6
                 totalcost += chargerate
             elif type == "chocolate":
-                chargerate = 0.72
+                chargerate = 0.5
                 totalcost += chargerate
         return totalcost
 
 
-    def cost_message (self, customerwallet:float ,totalcost:float):
+    def check_payment(self, totalcost, customerwallet):
         if customerwallet >= totalcost:
-            totalcost = totalcost - customerwallet
-            print(totalcost)
+            return True
         else:
-            print("Unfortunately you do not have enough money to afford a drink.")
-            remainingcost = customerwallet - totalcost
-            print("The remaining cost is:", remainingcost)
-        
-
-    def send_message(self, message):
-        return "M:{message}".format(message=message)
-
- 
+            print("Unfortunately you do not have enough money to afford a drink. The drink. The msising amount is: ", totalcost - customerwallet)
+            return False
+    
 
     
     
